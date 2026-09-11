@@ -1,26 +1,26 @@
 # TaylorMaclaurin-ExpandedPINN
-<img width="1694" height="975" alt="Screenshot 2026-05-13 at 11 08 22 AM" src="https://github.com/user-attachments/assets/76b4fdea-e6a1-4f50-9462-5b649b9843aa" />
+<img width="1694" height="975" alt="Screenshot 2026-05-13 at 11 08 22 AM" src="https://github.com/user-attachments/assets/76b4fdea-e6a1-4f50-9462-5b649b9843aa" />
 
-| CHEMENG 236.        | This paper                                        |
-| ------------------- | ------------------------------------------------- |
-| \(u_\theta(x,t)\)   | predicted concentration profile                   |
-| data                | experimental/numerical concentration measurements |
-| governing equation  | chemical-reaction ODEs                            |
-| physics residual    | kinetic ODE residual                              |
-| collocation points  | unmeasured time points                            |
-| \(\theta\)          | neural-network parameters                         |
-| optimization        | ADAM/backpropagation                              |
-| physics constraint  | reaction kinetics / mass balances                 |
+| CHEMENG 236. | This paper |
+| --- | --- |
+| $u_\theta(x,t)$ | predicted concentration profile |
+| data | experimental/numerical concentration measurements |
+| governing equation | chemical-reaction ODEs |
+| physics residual | kinetic ODE residual |
+| collocation points | unmeasured time points |
+| $\theta$ | neural-network parameters |
+| optimization | ADAM/backpropagation |
+| physics constraint | reaction kinetics / mass balances |
 
-| Paper notation               | Our notation          | Meaning                    |
-| ---------------------------- | --------------------- | -------------------------- |
-| \(u(x,t)\)                   | \([A]_\theta(t)\)     | predicted physical state   |
-| \(\lambda\)                  | \(\lambda\)           | kinetic/process parameters |
-| \(\mathcal N[u,\lambda]\)    | \(-f([A],t;\lambda)\) | governing physics          |
-| \(\frac{d[A]}{dt}=f([A],t)\) | chemical ODE          | reaction kinetics          |
-| \(f_\theta(t)\) in Eq. (3)   | \(r_\theta(t)\)       | physics residual           |
-| \(f_\theta(t)=0\)            | \(r_\theta(t)=0\)     | physics satisfied          |
-| —                            | \(h(u_\theta)=0\)     | equality constraint        |
+| Paper notation | Our notation | Meaning |
+| --- | --- | --- |
+| $u(x,t)$ | $[A]_\theta(t)$ | predicted physical state |
+| $\lambda$ | $\lambda$ | kinetic/process parameters |
+| $\mathcal N[u,\lambda]$ | $-f([A],t;\lambda)$ | governing physics |
+| $\frac{d[A]}{dt}=f([A],t)$ | chemical ODE | reaction kinetics |
+| $f_\theta(t)$ in Eq. (3) | $r_\theta(t)$ | physics residual |
+| $f_\theta(t)=0$ | $r_\theta(t)=0$ | physics satisfied |
+| — | $h(u_\theta)=0$ | equality constraint |
 
 
 # How it deal with error propagation , How broad is the work , level of accuracy and does it translate to harder problems? 
