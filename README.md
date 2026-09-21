@@ -9,7 +9,10 @@ Assigned reading: Group theory: Applications to the physics of condensed matter;
 Assigned reading: E(n) Equivariant Graph Neural Networks, ICML (2021). Link: https://proceedings.mlr.press/v139/satorras21a.htmlLinks to an external site.
 
 
-## HW1 : Multilayer perceptro to predict the atomization energy of QM -7 data set molecule 
+## HW1 : Multilayer perceptron to predict the atomization energy of QM -7 data set molecule 
+### Manual backpropagation in numpy for regression 
+$$ (R, Z) \rightarrow E_\theta(R, Z) \in \mathbb{R} $$
+
 References
 [1] L. C. Blum and J.-L. Reymond. “970 Million Druglike Small Molecules for Virtual Screening in the
 Chemical Universe Database GDB-13”. In: J. Am. Chem. Soc. 131 (2009), p. 8732.
@@ -18,6 +21,127 @@ mechanical properties spanning the chemical space of small organic molecules”.
 p. 43. doi: 10.1038/s41597-021-00812-4.
 [3] M. Rupp et al. “Fast and accurate modeling of molecular atomization energies with machine learn-
 ing”. In: Physical Review Letters 108 (2012), p. 058301
+
+```python
+# model.py 
+import numpy as np
+
+# parent class for a NN : module 
+
+class Module:
+	def update(self,lr): pass
+	def average(self,nn,a): pass
+	def backward(self,DY): pass
+	def forward(self,X): pass
+
+# inheritance: sequential . input , output , tanh
+
+class Sequential(Module):
+
+	def __init__(self,modules):
+		self.modules = modules
+	
+	def forward(self,X):
+		'''Given input X, perform a full forward pass through the MLP'''
+		
+		#TODO: fill in this function
+		# overwrite forward for object sequential.forward()
+
+		for m in self.modules:
+					X= m.forward(X)
+
+	
+	def backward(self,DY):
+		'''Perform a full backward pass through the MLP. 
+			DY is gradient of the loss w.r.t the final output'''
+		#TODO: fill in this function
+		for m in reversed(self.modules):
+			DY = m.backward(DY)
+		
+	def update(self,lr):
+		for m in self.modules: 
+			X = m.update(lr)
+		
+	def average(self,nn,a):
+		for m,n in zip(self.modules,nn.modules): 
+			m.average(n,a)
+
+class Input(Module):
+	def __init__(self, inp):
+		R, Z = inp
+		sample_in = np.concatenate([R, np.expand_dims(Z, -1)], axis = -1)
+		self.nbout = sample_in.shape[-2] * sample_in.shape[-1]
+	def forward(self,inp): 
+		R, Z = inp
+		rz = np.concatenate([R, np.expand_dims(Z, -1)], axis = -1)
+		return rz.reshape(rz.shape[0], -1)
+
+class Output(Module):
+
+	def __init__(self,T):
+		self.tmean = T.mean()
+		self.tstd  = T.std()
+		self.nbinp = 1
+
+	def forward(self,X):
+		# un-normalize the final prediction 
+		self.X = X.flatten()
+		return self.X*self.tstd+self.tmean
+
+	def backward(self,DY):
+		#TODO: fill in this function
+
+
+
+
+class Linear(Module):
+
+	def __init__(self,m,n):
+		self.lr = 1 / m**.5
+		self.W = np.random.normal(0,1 / m**.5,[m,n]).astype('float32')
+		self.B = np.zeros([n]).astype('float32')
+
+	def forward(self,X):
+		#TODO: fill in this function
+		# overwrite forward for object linear.forward()
+
+		# Y = xw + b
+		self.X = X
+		Y = X @ self.W + self.B
+
+		
+
+
+
+
+	def backward(self,DY):
+		#TODO: fill in this function
+
+
+
+
+
+
+	def update(self,lr):
+		self.W -= lr*self.lr*self.DW
+		self.B -= lr*self.lr*self.DB
+
+	def average(self,nn,a):
+		self.W = a*nn.W + (1-a)*self.W
+		self.B = a*nn.B + (1-a)*self.B
+
+class Tanh(Module):
+	
+	def forward(self,X):
+		#TODO: fill in this function
+		
+	def backward(self,DY):
+		#TODO: fill in this function
+
+
+
+```
+
 
 # Paper 1: TaylorMaclaurin-ExpandedPINN
 <img width="1694" height="975" alt="Screenshot 2026-05-13 at 11 08 22 AM" src="https://github.com/user-attachments/assets/76b4fdea-e6a1-4f50-9462-5b649b9843aa" />
