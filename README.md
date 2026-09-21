@@ -1,10 +1,10 @@
 # CHEMENG 236 Physics Informed Machine Learning
 ## Concepts
-- 1. Self-Supervised Learning
+1. **Self-Supervised Learning**
 Assigned reading: Characterizing possible failure modes in physics-informed neural networks. NeurIPS (2021). Link: https://proceedings.neurips.cc/paper/2021/hash/df438e5206f31600e6ae4af72f2725f1-Abstract.htmlLinks to an external site.
 Additional reading for more background: Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations. Link (arxiv version also exists): https://www.sciencedirect.com/science/article/abs/pii/S0021999118307125Links to an external site.
--2. Assigned reading: Frame averaging for invariant and equivariant network design, ICLR (2022). Link: https://openreview.net/forum?id=zIUyj55nXR
--3. Geometric Deep learning and Group theory 
+2. Assigned reading: Frame averaging for invariant and equivariant network design, ICLR (2022). Link: https://openreview.net/forum?id=zIUyj55nXR
+3. **Geometric Deep learning and Group theory**
 Assigned reading: Group theory: Applications to the physics of condensed matter; Sections 1.1, 1.2, 3.9.
 Assigned reading: E(n) Equivariant Graph Neural Networks, ICML (2021). Link: https://proceedings.mlr.press/v139/satorras21a.htmlLinks to an external site. 
 
