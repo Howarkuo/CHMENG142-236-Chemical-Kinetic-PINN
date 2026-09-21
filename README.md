@@ -6,7 +6,18 @@ Additional reading for more background: Physics-informed neural networks: A deep
 2. Assigned reading: Frame averaging for invariant and equivariant network design, ICLR (2022). Link: https://openreview.net/forum?id=zIUyj55nXR
 3. **Geometric Deep learning and Group theory**
 Assigned reading: Group theory: Applications to the physics of condensed matter; Sections 1.1, 1.2, 3.9.
-Assigned reading: E(n) Equivariant Graph Neural Networks, ICML (2021). Link: https://proceedings.mlr.press/v139/satorras21a.htmlLinks to an external site. 
+Assigned reading: E(n) Equivariant Graph Neural Networks, ICML (2021). Link: https://proceedings.mlr.press/v139/satorras21a.htmlLinks to an external site.
+
+
+## HW1 : Multilayer perceptro to predict the atomization energy of QM -7 data set molecule 
+References
+[1] L. C. Blum and J.-L. Reymond. “970 Million Druglike Small Molecules for Virtual Screening in the
+Chemical Universe Database GDB-13”. In: J. Am. Chem. Soc. 131 (2009), p. 8732.
+[2] J. Hoja, L. Medrano Sandonas, B.G. Ernst, et al. “QM7-X, a comprehensive dataset of quantum-
+mechanical properties spanning the chemical space of small organic molecules”. In: Sci Data 8 (2021),
+p. 43. doi: 10.1038/s41597-021-00812-4.
+[3] M. Rupp et al. “Fast and accurate modeling of molecular atomization energies with machine learn-
+ing”. In: Physical Review Letters 108 (2012), p. 058301
 
 # Paper 1: TaylorMaclaurin-ExpandedPINN
 <img width="1694" height="975" alt="Screenshot 2026-05-13 at 11 08 22 AM" src="https://github.com/user-attachments/assets/76b4fdea-e6a1-4f50-9462-5b649b9843aa" />
