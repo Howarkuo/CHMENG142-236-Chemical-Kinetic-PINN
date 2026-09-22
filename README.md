@@ -23,7 +23,6 @@ p. 43. doi: 10.1038/s41597-021-00812-4.
 ing”. In: Physical Review Letters 108 (2012), p. 058301
 
 ```python
-# model.py 
 import numpy as np
 
 # parent class for a NN : module 
@@ -49,7 +48,6 @@ class Sequential(Module):
 
 		for m in self.modules:
 					X= m.forward(X)
-
 	
 	def backward(self,DY):
 		'''Perform a full backward pass through the MLP. 
@@ -90,9 +88,13 @@ class Output(Module):
 
 	def backward(self,DY):
 		#TODO: fill in this function
-
-
-
+				# Y = X * tstd + tmean
+				# dY/dX = tstd
+				# therefore:
+				# dL/dX = dL/dY * tstd
+		DX = DY * self.tstd
+		# Linear layer expects shape (batch_size, 1)
+		return DX.reshape(-1, 1)
 
 class Linear(Module):
 
@@ -104,23 +106,19 @@ class Linear(Module):
 	def forward(self,X):
 		#TODO: fill in this function
 		# overwrite forward for object linear.forward()
-
 		# Y = xw + b
 		self.X = X
 		Y = X @ self.W + self.B
 
-		
-
-
-
 
 	def backward(self,DY):
 		#TODO: fill in this function
-
-
-
-
-
+		#weight gradient
+		self.DW = self.X.T @ DY
+		# bias gradient
+		self.DB = np.sum(DY, axis=0)
+		# input gradient 
+		DX = DY @ self.W.T
 
 	def update(self,lr):
 		self.W -= lr*self.lr*self.DW
@@ -134,12 +132,11 @@ class Tanh(Module):
 	
 	def forward(self,X):
 		#TODO: fill in this function
+		self.Y = np.tanh(X)
 		
 	def backward(self,DY):
 		#TODO: fill in this function
-
-
-
+		DX = DY * (1 - self.Y**2)
 ```
 
 
