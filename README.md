@@ -1,5 +1,5 @@
 # CHEMENG 236 Physics Informed Machine Learning
-## Concepts
+## Topics
 1. **Self-Supervised Learning**
 Assigned reading: Characterizing possible failure modes in physics-informed neural networks. NeurIPS (2021). Link: https://proceedings.neurips.cc/paper/2021/hash/df438e5206f31600e6ae4af72f2725f1-Abstract.htmlLinks to an external site.
 Additional reading for more background: Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations. Link (arxiv version also exists): https://www.sciencedirect.com/science/article/abs/pii/S0021999118307125Links to an external site.
@@ -7,7 +7,12 @@ Additional reading for more background: Physics-informed neural networks: A deep
 3. **Geometric Deep learning and Group theory**
 Assigned reading: Group theory: Applications to the physics of condensed matter; Sections 1.1, 1.2, 3.9.
 Assigned reading: E(n) Equivariant Graph Neural Networks, ICML (2021). Link: https://proceedings.mlr.press/v139/satorras21a.htmlLinks to an external site.
-
+## Concepts:
+- Group theory: group and GNN-> group isomorphism , group action (define symmetry / transformation) -> permutation group $S_N$ -> graph node relabeling -> GNN message passing _> node / graph output , equivariant / invariant 
+$- Feature with symmetry and neural network constraints : **Equivariance** - vector/tensor/physical properties, e.g.Force $$f(gx)=gf(x)$$​  (Transformation  propogate to the output )
+- , **Invariance**-scalar physical properties e.g. Energy $$(gx)=f(x)$$​ (Transformation disappears)
+e.g. for a water molecule position and rotation , for a NN to recognize -> Initial motivation for groups, invariance, equivariance: ways for the
+NN to be aware of symmetries to capture more info about a system 
 
 ## HW1 : Multilayer perceptron to predict the atomization energy of QM -7 data set molecule 
 ### Manual backpropagation in numpy for regression 
